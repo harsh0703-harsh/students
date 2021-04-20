@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+</head>
+
+<body>
+
+
+    <form class="app" method="POST" action="/predict">
+        <div id="final_price">
+           Average Score:  {{ Average }}
+
+        </div>
+
+        <div class="table">
+
+            <div class="wrap">
+                <div class="col">Gender</div>
+                <div class="value">
+                    <select name="Gender" id="Gender">
+                        <option value="Female">Female</option>
+                        <option value="Male">Male</option>
+                    </select>
+                </div>
+            </div>
+
+
+            <div class="wrap">
+                <div class="col">Race/ethnicity</div>
+
+                <div class="value">
+
+                    <select name="Race/ethnicity" id="Race/ethnicity">
+                        <option value="Group A">Group A</option>
+                        <option value="Group B">Group B</option>
+                        <option value="Group C">Group C</option>
+                        <option value="Group D">Group D</option>
+                        <option value="Group E">Group E</option>
+                    </select>
+
+                </div>
+            </div>
+
+            <div class="wrap">
+                <div class="col">Parental Level of Education
+                </div>
+                <div class="value">
+                    <select name="Parental_Level_of_Education" id="Parental Level of Education">
+                        <option value="some high school">Some High School</option>
+                        <option value="high school">High School</option>
+                        <option value="associate's degree">Associate's Degree</option>
+                        <option value="master's degree">Master's Degree</option>
+                        <option value="some college">some college</option>
+                        <option value="bachelor's degree">bachelor's degree</option>
+                    </select>
+
+                </div>
+            </div>
+
+            <div class="wrap">
+                <div class="col">Math Score</div>
+                <div class="value">
+                    <input type="text" name="Math_Score" required="required">
+                </div>
+
+            </div>
+
+            <div class="wrap">
+                <div class="col">Reading Score
+                </div>
+                <div class="value">
+                    <input type="text" name="Reading_score" required="required">
+
+                </div>
+            </div>
+
+            <div class="wrap">
+                <div class="col">Writing Score
+                </div>
+                <div class="value">
+                    <input type="text" name="Writing_score" required="required">
+
+                </div>
+            </div>
+    
+            <div class="wrap">
+                <div class="col">Lunch
+                </div>
+                <div class="value">
+
+                    <select name="Lunch" id="Lunch">
+                        <option value="standard">Standard</option>
+                        <option value="free/reduced">Free/Reduced</option>
+                    </select>
+
+                </div>
+            </div>
+
+            <div class="wrap">
+                <div class="col">test preparation course
+                </div>
+                <div class="value">
+                    <select name="test_preparation_course" id="test preparation course">
+                        <option value="None">None</option>
+                        <option value="Completed">Completed</option>
+                        </option>
+                    </select>
+
+                </div>
+            </div>
+
+        </div>
+        <button class="submitBtn" type="submit">Submit </button>
+    </form>
+
+</body>
+
+
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+
+    .app {
+        background-image: url("{{url_for('static',filename = 'images_score.png')}}"),
+        repeating-linear-gradient(45deg, rgb(83, 83, 83) 0px, rgb(83, 83, 83) 50px, rgb(124, 124, 124) 50px, rgb(124, 124, 124) 100px);
+        background-repeat: no-repeat;
+        background-size: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100%;
+        flex-flow: column nowrap;
+
+
+
+
+    }
+
+    .table {
+        backdrop-filter: blur(4px);
+        padding: 2em 1em;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.3);
+        border-radius: 5px;
+        width: 80vw;
+
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-around;
+        position: relative;
+        top: 10vw;
+    }
+
+    .wrap {
+        margin: 0.5em;
+        width: calc(33.33% - 2em);
+        display: flex;
+        flex-flow: column nowrap;
+        justify-content: space-between;
+    }
+
+    .wrap .col {
+        text-align: center;
+        font-size: 1em;
+        padding-bottom: 0.5em;
+        color: white;
+        text-transform: uppercase;
+        word-wrap: break-word;
+
+    }
+
+    .value input,
+    .value select {
+        width: 100%;
+        font-size: 1.2em;
+        border: none;
+        backdrop-filter: blur(4px);
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.4);
+        background: none;
+        color: whitesmoke;
+        padding: 0.25em 0.5em;
+        text-shadow: 0 2px 5px rgba(0, 0, 0, 0.3);
+
+    }
+
+    .value select option {
+        background: rgba(0, 0, 0, 0.3);
+        color: whitesmoke;
+    }
+
+    .submitBtn {
+        position: relative;
+        top: 10vw;
+        margin-top: 1em;
+        background: rgba(0, 0, 0, 0.3);
+        color: whitesmoke;
+        padding: 0.5em 2em;
+        font-size: 1.5em;
+        text-transform: uppercase;
+        border: none;
+
+    }
+
+    #final_price {
+        color:red;
+        font-size:x-large;
+        font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+        border: solid;
+        border-radius: 10px;
+        width:230px;
+        height: 90px;
+        text-align: left;
+        padding: 12px;
+        background-color: black;
+
+        
+
+    }
+</style>
+
+</html>
